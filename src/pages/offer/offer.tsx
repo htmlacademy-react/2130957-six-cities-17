@@ -67,7 +67,7 @@ export default function Offer () {
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
-                <h2 className="offer__inside-title">What's inside</h2>
+                <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   <li className="offer__inside-item">
                     Wi-Fi
