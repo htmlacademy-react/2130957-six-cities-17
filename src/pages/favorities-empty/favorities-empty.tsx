@@ -1,7 +1,7 @@
 import Header from '../../components/header/header.tsx';
 import Footer from '../../components/footer/footer.tsx';
 
-export default function FavoritiesEmpty () {
+export default function FavoritiesEmpty (): JSX.Element {
   return (
     <div className="page page--favorites-empty">
       <Header />

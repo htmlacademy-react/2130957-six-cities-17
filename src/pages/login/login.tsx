@@ -1,6 +1,6 @@
 import Header from '../../components/header/header.tsx';
 
-export default function Login () {
+export default function Login (): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <Header />

@@ -1,6 +1,6 @@
 import Header from '../../components/header/header.tsx';
 
-export default function MainEmpty () {
+export default function MainEmpty (): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />

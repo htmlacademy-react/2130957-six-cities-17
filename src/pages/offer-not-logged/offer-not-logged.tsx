@@ -1,6 +1,6 @@
 import Header from '../../components/header/header.tsx';
 
-export default function OfferNotLogged () {
+export default function OfferNotLogged (): JSX.Element {
   return (
     <div className="page">
       <Header />
