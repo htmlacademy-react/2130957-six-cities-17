@@ -1,12 +1,12 @@
-import PlaceCard from '../../components/place-card/place-card.tsx';
 import Header from '../../components/header/header.tsx';
+import LocationList from '../../components/location-list/location-list.tsx';
+import CurrentPlaces from '../../components/place-card/current-card.tsx';
 
 type MainPageProps = {
-  placesCount: number;
   allPlaces: number;
 }
 
-export default function MainPage({ placesCount, allPlaces }: MainPageProps): JSX.Element {
+export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -14,38 +14,7 @@ export default function MainPage({ placesCount, allPlaces }: MainPageProps): JSX
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <LocationList />
           </section>
         </div>
         <div className="cities">
@@ -69,7 +38,7 @@ export default function MainPage({ placesCount, allPlaces }: MainPageProps): JSX
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: placesCount}, (_, index) => <PlaceCard key = {index} />)}
+                <CurrentPlaces city="Amsterdam"/>
               </div>
             </section>
             <div className="cities__right-section">
