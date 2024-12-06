@@ -1,3 +1,5 @@
+import { LOCATIONS } from './const';
+
 type Place = {
   id: string;
   isPremium?: boolean;
@@ -7,7 +9,7 @@ type Place = {
   rating: number;
   name: string;
   type: string;
-  city: 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
+  city: LOCATIONS;
 };
 
 export type {Place};

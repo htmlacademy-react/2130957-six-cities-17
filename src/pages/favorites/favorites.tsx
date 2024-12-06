@@ -1,7 +1,7 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import FavoritePlaces from '../../components/place-card/favorite-card';
-import { PLACES } from '../../const';
+import { PLACES } from '../../mocks/offers';
 import { Helmet } from 'react-helmet-async';
 
 export default function Favorites(): JSX.Element {
