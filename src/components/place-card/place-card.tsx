@@ -1,30 +1,35 @@
-import {Place} from '../../types.ts';
+import { Place } from '../../types.ts';
+import { classMap } from '../../const.ts';
+
+type PageType = 'favorites' | 'cities';
 
 type PlaceCardProps = {
   place: Place;
-  isFavoritePage?: boolean;
+  pageType: PageType;
 };
 
-export default function PlaceCard({place, isFavoritePage}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({ place, pageType }: PlaceCardProps): JSX.Element {
+  const classes = classMap[pageType];
+
   return (
-    <article className={`${isFavoritePage ? 'favorites__card' : 'cities__card'} place-card`}>
+    <article className={`${classes.card} place-card`}>
       {place.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className={`${isFavoritePage ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
+      <div className={`${classes.imageWrapper} place-card__image-wrapper`}>
         <a href="#">
           <img
             className="place-card__image"
             src={place.image}
-            width={isFavoritePage ? 150 : 260}
-            height={isFavoritePage ? 110 : 200}
+            width={classes.imageWidth}
+            height={classes.imageHeight}
             alt="Place image"
           />
         </a>
       </div>
-      <div className={`${isFavoritePage ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${classes.info} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{place.price}</b>

@@ -7,7 +7,7 @@ export default function CurrentPlaces({ city }: { city: string }): JSX.Element {
   return (
     <>
       {currentPlaces.map((place) => (
-        <PlaceCard key={place.id} place={place} />
+        <PlaceCard key={place.id} place={place} pageType="cities" />
       ))}
     </>
   );

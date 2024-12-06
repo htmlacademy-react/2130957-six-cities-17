@@ -1,15 +1,22 @@
 import LocationItem from './location-item.tsx';
 import {LOCATIONS} from '../../const.ts';
 
-export default function LocationList(): JSX.Element {
+type LocationListProps = {
+  activeCity: LOCATIONS;
+  setActiveCity: (city: LOCATIONS) => void;
+};
+
+export default function LocationList({ activeCity, setActiveCity }: LocationListProps): JSX.Element {
+  const locations: LOCATIONS[] = Object.values(LOCATIONS);
 
   return (
     <ul className="locations__list tabs__list">
-      {LOCATIONS.map((location) => (
+      {locations.map((city) => (
         <LocationItem
-          key={location.city}
-          city={location.city}
-          isActive={location.isActive}
+          key={city}
+          city={city}
+          isActive={city === activeCity}
+          onClick={() => setActiveCity(city)}
         />
       ))}
     </ul>

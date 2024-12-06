@@ -18,14 +18,14 @@ export const AppRoutes = {
   Error : '*'
 } as const;
 
-export const LOCATIONS = [
-  { city: 'Paris', isActive: false },
-  { city: 'Cologne', isActive: false },
-  { city: 'Brussels', isActive: false },
-  { city: 'Amsterdam', isActive: true },
-  { city: 'Hamburg', isActive: false },
-  { city: 'Dusseldorf', isActive: false },
-];
+export enum LOCATIONS {
+  PARIS = 'Paris',
+  COLOGNE = 'Cologne',
+  BRUSSELS = 'Brussels',
+  AMSTERDAM = 'Amsterdam',
+  HAMBURG = 'Hamburg',
+  DUSSELDORF = 'Dusseldorf',
+}
 
 export const PLACES: Place[] = [
   {
@@ -96,3 +96,19 @@ export const PLACES: Place[] = [
   }
 ];
 
+export const classMap = {
+  favorites: {
+    card: 'favorites__card',
+    imageWrapper: 'favorites__image-wrapper',
+    imageWidth: 150,
+    imageHeight: 110,
+    info: 'favorites__card-info',
+  },
+  cities: {
+    card: 'cities__card',
+    imageWrapper: 'cities__image-wrapper',
+    imageWidth: 260,
+    imageHeight: 200,
+    info: '',
+  },
+};

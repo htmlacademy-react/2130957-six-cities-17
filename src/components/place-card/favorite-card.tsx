@@ -7,7 +7,7 @@ export default function FavoritePlaces({ city }: { city: string }): JSX.Element 
   return (
     <>
       {favoritePlaces.map((place) => (
-        <PlaceCard key={place.id} place={place} isFavoritePage />
+        <PlaceCard key={place.id} place={place} pageType="favorites" />
       ))}
     </>
   );

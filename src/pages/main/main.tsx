@@ -1,13 +1,29 @@
+import { useEffect, useState } from 'react';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
+import { LOCATIONS } from '../../const.ts';
+import { useLocation } from 'react-router-dom';
 
 type MainPageProps = {
   allPlaces: number;
-}
+};
 
 export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
+  const location = useLocation();
+  const [params] = useState(() => new URLSearchParams(location.search));
+  const initialCity = params.get('city') as LOCATIONS;
+  const [activeCity, setActiveCity] = useState<LOCATIONS>(
+    initialCity && Object.values(LOCATIONS).includes(initialCity) ? initialCity : LOCATIONS.AMSTERDAM
+  );
+
+  useEffect(() => {
+    if (params.get('city') && params.get('city') !== activeCity) {
+      setActiveCity(params.get('city') as LOCATIONS);
+    }
+  }, [location.search, activeCity, params]);
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -18,14 +34,14 @@ export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList />
+            <LocationList activeCity={activeCity} setActiveCity={setActiveCity} />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{allPlaces} places to stay in Amsterdam</b>
+              <b className="places__found">{allPlaces} places to stay in {activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -42,7 +58,7 @@ export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CurrentPlaces city="Amsterdam"/>
+                <CurrentPlaces city={activeCity} />
               </div>
             </section>
             <div className="cities__right-section">
