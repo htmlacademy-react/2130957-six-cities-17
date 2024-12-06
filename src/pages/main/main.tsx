@@ -12,17 +12,15 @@ type MainPageProps = {
 
 export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
   const location = useLocation();
-  const [params] = useState(() => new URLSearchParams(location.search));
-  const initialCity = params.get('city') as LOCATIONS;
-  const [activeCity, setActiveCity] = useState<LOCATIONS>(
-    initialCity && Object.values(LOCATIONS).includes(initialCity) ? initialCity : LOCATIONS.AMSTERDAM
-  );
+  const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
 
   useEffect(() => {
-    if (params.get('city') && params.get('city') !== activeCity) {
-      setActiveCity(params.get('city') as LOCATIONS);
+    const params = new URLSearchParams(location.search);
+    const cityParam = params.get('city') as LOCATIONS;
+    if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
+      setActiveCity(cityParam);
     }
-  }, [location.search, activeCity, params]);
+  }, [activeCity, location.search]);
 
   return (
     <div className="page page--gray page--main">
