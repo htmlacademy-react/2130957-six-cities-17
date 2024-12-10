@@ -1,10 +1,15 @@
-import { PLACES } from '../../mocks/offers';
 import { LOCATIONS } from '../../const';
 import PlaceCard from './place-card';
+import { Place } from '../../types';
 
-export default function CurrentPlaces({ city }: { city: LOCATIONS }): JSX.Element {
+type CurrentPlacesProps = {
+  city: LOCATIONS;
+  places: Place[];
+}
 
-  const currentPlaces = PLACES.filter((place) => place.city.name.toLowerCase() === city.toLowerCase());
+export default function CurrentPlaces({ city, places }: CurrentPlacesProps): JSX.Element {
+
+  const currentPlaces = places.filter((place) => place.city.name.toLowerCase() === city.toLowerCase());
 
   return (
     <>

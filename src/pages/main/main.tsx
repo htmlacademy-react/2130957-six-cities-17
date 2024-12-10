@@ -5,12 +5,14 @@ import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
 import { LOCATIONS } from '../../const.ts';
 import { useLocation } from 'react-router-dom';
+import { Place } from '../../types.ts';
 
 type MainPageProps = {
   allPlaces: number;
+  places: Place[];
 };
 
-export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
+export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
   const location = useLocation();
   const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
 
@@ -56,7 +58,7 @@ export default function MainPage({ allPlaces }: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CurrentPlaces city={activeCity} />
+                <CurrentPlaces places={places} city={activeCity} />
               </div>
             </section>
             <div className="cities__right-section">

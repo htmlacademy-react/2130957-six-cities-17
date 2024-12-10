@@ -1,9 +1,14 @@
-import { PLACES } from '../../mocks/offers';
 import PlaceCard from './place-card';
 import { LOCATIONS } from '../../const';
+import { Place } from '../../types';
 
-export default function FavoritePlaces({ city }: { city: LOCATIONS }): JSX.Element {
-  const favoritePlaces = PLACES.filter(
+type FavoritePlacesProps = {
+  city: LOCATIONS;
+  places: Place[];
+}
+
+export default function FavoritePlaces({ city, places }: FavoritePlacesProps): JSX.Element {
+  const favoritePlaces = places.filter(
     (place) => place.isFavorite && place.city.name.toLowerCase() === city.toLowerCase()
   );
 

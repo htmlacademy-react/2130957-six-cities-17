@@ -1,12 +1,16 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import FavoritePlaces from '../../components/place-card/favorite-card';
-import { PLACES } from '../../mocks/offers';
 import { LOCATIONS } from '../../const';
 import { Helmet } from 'react-helmet-async';
+import { Place } from '../../types';
 
-export default function Favorites(): JSX.Element {
-  const citiesWithFavorites = PLACES.filter((place) => place.isFavorite).map((place) => place.city.name);
+type FavoritesProps = {
+  places: Place[];
+};
+
+export default function Favorites({ places }: FavoritesProps): JSX.Element {
+  const citiesWithFavorites = places.filter((place) => place.isFavorite).map((place) => place.city.name);
   const uniqueCitiesWithFavorites = [...new Set(citiesWithFavorites)];
 
   return (
@@ -33,7 +37,7 @@ export default function Favorites(): JSX.Element {
                       </div>
                     </div>
                     <div className="favorites__places">
-                      <FavoritePlaces city={cityLocation} />
+                      <FavoritePlaces places={places} city={cityLocation} />
                     </div>
                   </li>
                 );
