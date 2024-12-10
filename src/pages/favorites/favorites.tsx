@@ -2,10 +2,11 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import FavoritePlaces from '../../components/place-card/favorite-card';
 import { PLACES } from '../../mocks/offers';
+import { LOCATIONS } from '../../const';
 import { Helmet } from 'react-helmet-async';
 
 export default function Favorites(): JSX.Element {
-  const citiesWithFavorites = PLACES.filter((place) => place.isBookmarked).map((place) => place.city);
+  const citiesWithFavorites = PLACES.filter((place) => place.isFavorite).map((place) => place.city.name);
   const uniqueCitiesWithFavorites = [...new Set(citiesWithFavorites)];
 
   return (
@@ -19,20 +20,24 @@ export default function Favorites(): JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {uniqueCitiesWithFavorites.map((city) => (
-                <li key={city} className="favorites__locations-items">
-                  <div className="favorites__locations locations locations--current">
-                    <div className="locations__item">
-                      <a className="locations__item-link" href="#">
-                        <span>{city}</span>
-                      </a>
+              {uniqueCitiesWithFavorites.map((city) => {
+                const cityLocation = LOCATIONS[city.toUpperCase() as keyof typeof LOCATIONS];
+
+                return (
+                  <li key={city} className="favorites__locations-items">
+                    <div className="favorites__locations locations locations--current">
+                      <div className="locations__item">
+                        <a className="locations__item-link" href="#">
+                          <span>{city}</span>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="favorites__places">
-                    <FavoritePlaces city={city} />
-                  </div>
-                </li>
-              ))}
+                    <div className="favorites__places">
+                      <FavoritePlaces city={cityLocation} />
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         </div>

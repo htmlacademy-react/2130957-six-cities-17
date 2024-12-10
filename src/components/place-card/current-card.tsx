@@ -1,9 +1,10 @@
 import { PLACES } from '../../mocks/offers';
-import PlaceCard from './place-card';
 import { LOCATIONS } from '../../const';
+import PlaceCard from './place-card';
 
 export default function CurrentPlaces({ city }: { city: LOCATIONS }): JSX.Element {
-  const currentPlaces = PLACES.filter((place) => place.city === city);
+
+  const currentPlaces = PLACES.filter((place) => place.city.name.toLowerCase() === city.toLowerCase());
 
   return (
     <>

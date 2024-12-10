@@ -1,115 +1,234 @@
-import { LOCATIONS } from '../const';
 import { Place } from '../types';
 
 export const PLACES: Place[] = [
   {
-    id: '1',
-    isPremium: true,
-    image: 'img/apartment-01.jpg',
+    id: '10deef2b-51e8-4d41-800a-fe0dddd7a285',
+    title: 'Beautiful & luxurious apartment at great location',
+    type: 'apartment',
     price: 120,
-    isBookmarked: false,
-    name: 'Beautiful & luxurious apartment at great location',
-    type: 'Apartment',
-    rating: 80,
-    city: LOCATIONS.AMSTERDAM,
+    previewImage: 'img/apartment-01.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.38454,
+      longitude: 4.907976,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 4.0
   },
   {
-    id: '2',
-    isPremium: false,
-    image: 'img/room.jpg',
+    id: 'eb9736ff-44fc-42be-be39-612b309cace0',
+    title: 'Wood and stone place',
+    type: 'room',
     price: 80,
-    isBookmarked: true,
-    name: 'Wood and stone place',
-    type: 'Room',
-    rating: 80,
-    city: LOCATIONS.AMSTERDAM,
+    previewImage: 'img/room.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.38454,
+      longitude: 4.907976,
+      zoom: 16
+    },
+    isFavorite: true,
+    isPremium: false,
+    rating: 4.0
   },
   {
-    id: '3',
-    isPremium: false,
-    image: 'img/apartment-02.jpg',
+    id: 'ed31721d-1098-421b-8646-0f8aa0d5a8de',
+    title: 'Canal View Prinsengracht',
+    type: 'apartment',
     price: 132,
-    isBookmarked: false,
-    name: 'Canal View Prinsengracht',
-    type: 'Apartment',
-    rating: 80,
-    city: LOCATIONS.AMSTERDAM,
-  },
-  {
-    id: '4',
-    isPremium: true,
-    image: 'img/apartment-03.jpg',
-    price: 180,
-    isBookmarked: false,
-    name: 'Nice, cozy, warm big bed apartment',
-    type: 'Apartment',
-    rating: 100,
-    city: LOCATIONS.AMSTERDAM,
-  },
-  {
-    id: '5',
+    previewImage: 'img/apartment-02.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.38454,
+      longitude: 4.907976,
+      zoom: 16
+    },
+    isFavorite: false,
     isPremium: false,
-    image: 'img/room.jpg',
+    rating: 4.0
+  },
+  {
+    id: 'ac1bd19e-916d-41b2-ae47-ec7af382fc6b',
+    title: 'Nice, cozy, warm big bed apartment',
+    type: 'apartment',
+    price: 180,
+    previewImage: 'img/apartment-03.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.38454,
+      longitude: 4.907976,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 5.0
+  },
+  {
+    id: '4496a0b1-aa8a-41ec-9793-08c7434db342',
+    title: 'Wood and stone place',
+    type: 'room',
     price: 80,
-    isBookmarked: true,
-    name: 'Wood and stone place',
-    type: 'Room',
-    rating: 80,
-    city: LOCATIONS.AMSTERDAM,
+    previewImage: 'img/room.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.38454,
+      longitude: 4.907976,
+      zoom: 16
+    },
+    isFavorite: true,
+    isPremium: false,
+    rating: 4.0
   },
   {
-    id: '6',
-    isPremium: false,
-    image: 'img/apartment-small-04.jpg',
+    id: '2cd9b32b-18ad-4102-ae90-aa497f9f5b93',
+    title: 'White Castle',
+    type: 'apartment',
     price: 180,
-    isBookmarked: true,
-    name: 'White Castle',
-    type: 'Apartment',
-    rating: 100,
-    city: LOCATIONS.COLOGNE,
+    previewImage: 'img/apartment-small-04.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.935173,
+        longitude: 6.953101,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 50.945173,
+      longitude: 6.963101,
+      zoom: 16
+    },
+    isFavorite: true,
+    isPremium: false,
+    rating: 5.0
   },
   {
-    id: '7',
-    isPremium: false,
-    image: 'img/room.jpg',
+    id: 'ed31661d-a8b2-4059-b1c7-4a67536e8132',
+    title: 'Wood and stone place',
+    type: 'room',
     price: 80,
-    isBookmarked: true,
-    name: 'Wood and stone place',
-    type: 'Room',
-    rating: 80,
-    city: LOCATIONS.BRUSSELS,
-  },
-  {
-    id: '8',
+    previewImage: 'img/room.jpg',
+    city: {
+      name: 'Brussels',
+      location: {
+        latitude: 50.85045,
+        longitude: 4.34878,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 50.86045,
+      longitude: 4.35878,
+      zoom: 16
+    },
+    isFavorite: false,
     isPremium: false,
-    image: 'img/apartment-small-04.jpg',
-    price: 180,
-    isBookmarked: true,
-    name: 'White Castle',
-    type: 'Apartment',
-    rating: 100,
-    city: LOCATIONS.DUSSELDORF,
+    rating: 4.0
   },
   {
-    id: '9',
-    isPremium: true,
-    image: 'img/apartment-03.jpg',
+    id: '7c5d9d6d-85be-4f86-995c-9ee716572984',
+    title: 'White Castle',
+    type: 'apartment',
     price: 180,
-    isBookmarked: false,
-    name: 'Nice, cozy, warm big bed apartment',
-    type: 'Apartment',
-    rating: 100,
-    city: LOCATIONS.HAMBURG,
+    previewImage: 'img/apartment-small-04.jpg',
+    city: {
+      name: 'Dusseldorf',
+      location: {
+        latitude: 51.227741,
+        longitude: 6.773456,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 51.237741,
+      longitude: 6.783456,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: false,
+    rating: 5.0
   },
   {
-    id: '10',
-    isPremium: true,
-    image: 'img/apartment-03.jpg',
+    id: 'cb990b56-4bc8-4c6c-a291-607964f808ba',
+    title: 'Nice, cozy, warm big bed apartment',
+    type: 'apartment',
     price: 180,
-    isBookmarked: false,
-    name: 'Nice, cozy, warm big bed apartment',
-    type: 'Apartment',
-    rating: 100,
-    city: LOCATIONS.PARIS
+    previewImage: 'img/apartment-03.jpg',
+    city: {
+      name: 'Hamburg',
+      location: {
+        latitude: 53.551086,
+        longitude: 9.993682,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 53.561086,
+      longitude: 10.003682,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 5.0
   },
+  {
+    id: '98ae2fb3-535a-4c53-982b-1e169c4a2a87',
+    title: 'Nice, cozy, warm big bed apartment',
+    type: 'apartment',
+    price: 180,
+    previewImage: 'img/apartment-03.jpg',
+    city: {
+      name: 'Paris',
+      location: {
+        latitude: 48.856613,
+        longitude: 2.352222,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 48.866613,
+      longitude: 2.362222,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 5.0
+  }
 ];
