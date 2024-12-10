@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
@@ -15,6 +15,11 @@ type MainPageProps = {
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
   const location = useLocation();
   const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
+  const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
+
+  const handleCardHover = (id: string | null) => {
+    setActivePlaceId(id);
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -58,7 +63,11 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CurrentPlaces places={places} city={activeCity} />
+                <CurrentPlaces
+                  places={places}
+                  city={activeCity}
+                  onCardHover={handleCardHover}
+                />
               </div>
             </section>
             <div className="cities__right-section">

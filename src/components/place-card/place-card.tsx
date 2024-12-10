@@ -6,13 +6,15 @@ type PageType = 'favorites' | 'cities';
 type PlaceCardProps = {
   place: Place;
   pageType: PageType;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
-export default function PlaceCard({ place, pageType }: PlaceCardProps): JSX.Element {
+export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }: PlaceCardProps): JSX.Element {
   const classes = classMap[pageType];
 
   return (
-    <article className={`${classes.card} place-card`}>
+    <article onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`${classes.card} place-card`}>
       {place.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
