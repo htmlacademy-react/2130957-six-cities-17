@@ -12,7 +12,6 @@ export type CityType = {
 }
 
 export type Place = {
-  filter(arg0: (place: any) => any): unknown;
   id: string;
   title: string;
   type: string;
@@ -23,4 +22,9 @@ export type Place = {
   isPremium: boolean;
   rating: number;
   previewImage: string;
+}
+
+export type ReviewFormType = {
+  rating: number;
+  review: string;
 }

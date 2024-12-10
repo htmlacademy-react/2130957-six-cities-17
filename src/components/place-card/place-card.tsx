@@ -1,5 +1,7 @@
 import { Place } from '../../types.ts';
 import { classMap } from '../../const.ts';
+import { AppRoutes } from '../../const';
+import { Link } from 'react-router-dom';
 
 type PageType = 'favorites' | 'cities';
 
@@ -21,7 +23,7 @@ export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }
         </div>
       )}
       <div className={`${classes.imageWrapper} place-card__image-wrapper`}>
-        <a href="#">
+        <Link to={AppRoutes.Offer}>
           <img
             className="place-card__image"
             src={place.previewImage}
@@ -29,7 +31,7 @@ export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }
             height={classes.imageHeight}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className={`${classes.info} place-card__info`}>
         <div className="place-card__price-wrapper">
@@ -54,7 +56,7 @@ export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{place.title}</a>
+          <Link to={AppRoutes.Offer}>{place.title}</Link>
         </h2>
         <p className="place-card__type">{place.type}</p>
       </div>

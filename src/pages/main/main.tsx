@@ -15,7 +15,7 @@ type MainPageProps = {
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
   const location = useLocation();
   const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
-  const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
+  const [, setActivePlaceId] = useState<string | null>(null);
 
   const handleCardHover = (id: string | null) => {
     setActivePlaceId(id);

@@ -1,3 +1,5 @@
+import { ReviewFormType } from './types';
+
 export const CardSettings = {
   AllPlaces: 312
 } as const;
@@ -40,4 +42,9 @@ export const classMap = {
     imageHeight: 200,
     info: '',
   },
+};
+
+export const DEFAULT_STATE: ReviewFormType = {
+  rating: 0,
+  review: '',
 };

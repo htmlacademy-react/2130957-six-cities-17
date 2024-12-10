@@ -18,8 +18,8 @@ export default function CurrentPlaces({ city, places, onCardHover }: CurrentPlac
           key={place.id}
           place={place}
           pageType="cities"
-          onMouseEnter={() => onCardHover(place.id)} // Наведение на карточку
-          onMouseLeave={() => onCardHover(null)} // Уход с карточки
+          onMouseEnter={() => onCardHover(place.id)}
+          onMouseLeave={() => onCardHover(null)}
         />
       ))}
     </>
