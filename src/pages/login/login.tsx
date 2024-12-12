@@ -1,8 +1,14 @@
+import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header.tsx';
+import { AppRoutes } from '../../const';
+import { Link } from 'react-router-dom';
 
 export default function Login (): JSX.Element {
   return (
     <div className="page page--gray page--login">
+      <Helmet>
+        <title>6 cities: authorization</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--login">
         <div className="page__login-container container">
@@ -22,9 +28,9 @@ export default function Login (): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to={AppRoutes.Main}>
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>

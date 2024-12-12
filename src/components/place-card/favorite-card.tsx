@@ -1,13 +1,21 @@
-import { PLACES } from '../../const';
 import PlaceCard from './place-card';
+import { LOCATIONS } from '../../const';
+import { Place } from '../../types';
 
-export default function FavoritePlaces({ city }: { city: string }): JSX.Element {
-  const favoritePlaces = PLACES.filter((place) => place.isBookmarked && place.city === city);
+type FavoritePlacesProps = {
+  city: LOCATIONS;
+  places: Place[];
+}
+
+export default function FavoritePlaces({ city, places }: FavoritePlacesProps): JSX.Element {
+  const favoritePlaces = places.filter(
+    (place) => place.isFavorite && place.city.name.toLowerCase() === city.toLowerCase()
+  );
 
   return (
     <>
       {favoritePlaces.map((place) => (
-        <PlaceCard key={place.id} place={place} isFavoritePage />
+        <PlaceCard key={place.id} place={place} pageType="favorites" />
       ))}
     </>
   );

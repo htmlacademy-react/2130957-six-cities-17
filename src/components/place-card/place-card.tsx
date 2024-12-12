@@ -1,53 +1,62 @@
-import {Place} from '../../types.ts';
+import { Place } from '../../types.ts';
+import { classMap } from '../../const.ts';
+import { AppRoutes } from '../../const';
+import { Link } from 'react-router-dom';
+
+type PageType = 'favorites' | 'cities';
 
 type PlaceCardProps = {
   place: Place;
-  isFavoritePage?: boolean;
+  pageType: PageType;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
-export default function PlaceCard({place, isFavoritePage}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }: PlaceCardProps): JSX.Element {
+  const classes = classMap[pageType];
+
   return (
-    <article className={`${isFavoritePage ? 'favorites__card' : 'cities__card'} place-card`}>
+    <article onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`${classes.card} place-card`}>
       {place.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className={`${isFavoritePage ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
-        <a href="#">
+      <div className={`${classes.imageWrapper} place-card__image-wrapper`}>
+        <Link to={AppRoutes.Offer}>
           <img
             className="place-card__image"
-            src={place.image}
-            width={isFavoritePage ? 150 : 260}
-            height={isFavoritePage ? 110 : 200}
+            src={place.previewImage}
+            width={classes.imageWidth}
+            height={classes.imageHeight}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
-      <div className={`${isFavoritePage ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${classes.info} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{place.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button ${place.isBookmarked ? 'place-card__bookmark-button--active' : ''} button`}
+            className={`place-card__bookmark-button ${place.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
             type="button"
           >
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
-            <span className="visually-hidden">{place.isBookmarked ? 'In bookmarks' : 'To bookmarks'}</span>
+            <span className="visually-hidden">{place.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${place.rating}%` }} />
+            <span style={{ width: `${(place.rating / 5) * 100}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{place.name}</a>
+          <Link to={AppRoutes.Offer}>{place.title}</Link>
         </h2>
         <p className="place-card__type">{place.type}</p>
       </div>

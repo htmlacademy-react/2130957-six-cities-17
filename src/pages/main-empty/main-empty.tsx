@@ -1,15 +1,32 @@
+import {useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
+import { useLocation } from 'react-router-dom';
+import { LOCATIONS } from '../../const.ts';
 
 export default function MainEmpty (): JSX.Element {
+  const location = useLocation();
+  const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const cityParam = params.get('city') as LOCATIONS;
+    if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
+      setActiveCity(cityParam);
+    }
+  }, [activeCity, location.search]);
+
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList />
+            <LocationList activeCity={activeCity} setActiveCity={setActiveCity} />
           </section>
         </div>
         <div className="cities">

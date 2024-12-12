@@ -1,13 +1,30 @@
-type Place = {
-  id: string;
-  isPremium?: boolean;
-  image: string;
-  price: number;
-  isBookmarked?: boolean;
-  rating: number;
-  name: string;
-  type: string;
-  city: 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
-};
+export type CityName = string;
 
-export type {Place};
+export type LocationType = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
+
+export type CityType = {
+  name: CityName;
+  location: LocationType;
+}
+
+export type Place = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: CityType;
+  location: LocationType;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
+}
+
+export type ReviewFormType = {
+  rating: number;
+  review: string;
+}
