@@ -27,6 +27,11 @@ export enum LOCATIONS {
   DUSSELDORF = 'Dusseldorf',
 }
 
+export enum CardType {
+  Favorites = 'favorites',
+  Cities = 'cities',
+}
+
 export const classMap = {
   favorites: {
     card: 'favorites__card',

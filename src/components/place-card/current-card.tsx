@@ -1,6 +1,7 @@
 import { LOCATIONS } from '../../const';
 import PlaceCard from './place-card';
 import { Place } from '../../types';
+import { CardType } from '../../const.ts';
 
 type CurrentPlacesProps = {
   city: LOCATIONS;
@@ -17,7 +18,7 @@ export default function CurrentPlaces({ city, places, onCardHover }: CurrentPlac
         <PlaceCard
           key={place.id}
           place={place}
-          pageType="cities"
+          pageType={CardType.Cities}
           onMouseEnter={() => onCardHover(place.id)}
           onMouseLeave={() => onCardHover(null)}
         />

@@ -1,6 +1,7 @@
 import PlaceCard from './place-card';
 import { LOCATIONS } from '../../const';
 import { Place } from '../../types';
+import { CardType } from '../../const.ts';
 
 type FavoritePlacesProps = {
   city: LOCATIONS;
@@ -15,7 +16,7 @@ export default function FavoritePlaces({ city, places }: FavoritePlacesProps): J
   return (
     <>
       {favoritePlaces.map((place) => (
-        <PlaceCard key={place.id} place={place} pageType="favorites" />
+        <PlaceCard key={place.id} place={place} pageType={CardType.Favorites} />
       ))}
     </>
   );

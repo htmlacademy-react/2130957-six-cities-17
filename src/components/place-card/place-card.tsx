@@ -2,12 +2,11 @@ import { Place } from '../../types.ts';
 import { classMap } from '../../const.ts';
 import { AppRoutes } from '../../const';
 import { Link } from 'react-router-dom';
-
-type PageType = 'favorites' | 'cities';
+import { CardType } from '../../const.ts';
 
 type PlaceCardProps = {
   place: Place;
-  pageType: PageType;
+  pageType: CardType;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
