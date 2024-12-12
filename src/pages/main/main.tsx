@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
-import { LOCATIONS } from '../../const.ts';
 import { Place } from '../../types.ts';
+import { useActiveCity } from '../../hooks/active-city.ts';
+import { useCityChange } from '../../hooks/change-city.ts';
 
 type MainPageProps = {
   allPlaces: number;
@@ -13,24 +13,12 @@ type MainPageProps = {
 };
 
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
+  const [activeCity, setActiveCity] = useActiveCity();
+  const handleCityChange = useCityChange(activeCity, setActiveCity);
   const [, setActivePlaceId] = useState<string | null>(null);
 
   const handleCardHover = (id: string | null) => {
     setActivePlaceId(id);
-  };
-
-  useEffect(() => {
-    const cityParam = searchParams.get('city') as LOCATIONS;
-    if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
-      setActiveCity(cityParam);
-    }
-  }, [searchParams, activeCity]);
-
-  const handleCityChange = (newCity: LOCATIONS) => {
-    setActiveCity(newCity);
-    setSearchParams({ city: newCity });
   };
 
   return (
