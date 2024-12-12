@@ -11,11 +11,11 @@ export const AuthStatus = {
 } as const;
 
 export const AppRoutes = {
-  Main : '/',
-  Login : '/login',
-  Favourites : '/favourites',
-  Offer : '/offer/:id',
-  Error : '*'
+  Main: '/',
+  Login: '/login',
+  Favourites: '/favourites',
+  Offer: '/offer/:id',
+  Error: '*'
 } as const;
 
 export enum LOCATIONS {

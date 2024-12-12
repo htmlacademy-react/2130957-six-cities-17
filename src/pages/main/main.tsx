@@ -1,10 +1,10 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
 import { LOCATIONS } from '../../const.ts';
-import { useLocation } from 'react-router-dom';
 import { Place } from '../../types.ts';
 
 type MainPageProps = {
@@ -13,7 +13,7 @@ type MainPageProps = {
 };
 
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
-  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
   const [, setActivePlaceId] = useState<string | null>(null);
 
@@ -22,12 +22,16 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const cityParam = params.get('city') as LOCATIONS;
+    const cityParam = searchParams.get('city') as LOCATIONS;
     if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
       setActiveCity(cityParam);
     }
-  }, [activeCity, location.search]);
+  }, [searchParams, activeCity]);
+
+  const handleCityChange = (newCity: LOCATIONS) => {
+    setActiveCity(newCity);
+    setSearchParams({ city: newCity });
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -39,7 +43,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList activeCity={activeCity} setActiveCity={setActiveCity} />
+            <LocationList activeCity={activeCity} setActiveCity={handleCityChange} />
           </section>
         </div>
         <div className="cities">

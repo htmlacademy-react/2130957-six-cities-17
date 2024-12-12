@@ -2,19 +2,19 @@ import {useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
-import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { LOCATIONS } from '../../const.ts';
 
-export default function MainEmpty (): JSX.Element {
-  const location = useLocation();
+export default function MainEmpty(): JSX.Element {
+  const [searchParams] = useSearchParams();
   const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
+
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const cityParam = params.get('city') as LOCATIONS;
+    const cityParam = searchParams.get('city') as LOCATIONS;
     if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
       setActiveCity(cityParam);
     }
-  }, [activeCity, location.search]);
+  }, [searchParams, activeCity]);
 
   return (
     <div className="page page--gray page--main">
@@ -34,7 +34,9 @@ export default function MainEmpty (): JSX.Element {
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
                 <b className="cities__status">No places to stay available</b>
-                <p className="cities__status-description">We could not find any property available at the moment in Dusseldorf</p>
+                <p className="cities__status-description">
+                  We could not find any property available at the moment in {activeCity}
+                </p>
               </div>
             </section>
             <div className="cities__right-section" />
@@ -42,6 +44,6 @@ export default function MainEmpty (): JSX.Element {
         </div>
       </main>
     </div>
-
   );
 }
+
