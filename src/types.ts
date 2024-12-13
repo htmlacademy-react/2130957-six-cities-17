@@ -1,4 +1,6 @@
-export type CityName = string;
+import { LOCATIONS } from './const';
+
+export type CityName = (typeof LOCATIONS)[keyof typeof LOCATIONS];
 
 export type LocationType = {
   latitude: number;
@@ -28,3 +30,6 @@ export type ReviewFormType = {
   rating: number;
   review: string;
 }
+
+export type Point = Pick<Place, 'id' | 'location'>;
+

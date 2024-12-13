@@ -1,10 +1,10 @@
-import { LOCATIONS } from '../../const';
+import { CityName } from '../../types';
 import PlaceCard from './place-card';
 import { Place } from '../../types';
 import { CardType } from '../../const.ts';
 
 type CurrentPlacesProps = {
-  city: LOCATIONS;
+  city: CityName;
   places: Place[];
   onCardHover: (id: string | null) => void;
 };

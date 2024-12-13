@@ -10,15 +10,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 12
       }
     },
     location: {
-      latitude: 52.38454,
-      longitude: 4.907976,
-      zoom: 16
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: true,
@@ -33,15 +33,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
+        latitude: 52.3609553943508,
+        longitude: 4.85309666406198,
+        zoom: 12
       }
     },
     location: {
-      latitude: 52.38454,
-      longitude: 4.907976,
-      zoom: 16
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 12
     },
     isFavorite: true,
     isPremium: false,
@@ -56,15 +56,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 12
       }
     },
     location: {
-      latitude: 52.38454,
-      longitude: 4.907976,
-      zoom: 16
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: false,
@@ -79,15 +79,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+        zoom: 12
       }
     },
     location: {
-      latitude: 52.38454,
-      longitude: 4.907976,
-      zoom: 16
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: true,
@@ -104,13 +104,13 @@ export const PLACES: Place[] = [
       location: {
         latitude: 52.37454,
         longitude: 4.897976,
-        zoom: 13
+        zoom: 12
       }
     },
     location: {
       latitude: 52.38454,
       longitude: 4.907976,
-      zoom: 16
+      zoom: 12
     },
     isFavorite: true,
     isPremium: false,
@@ -127,13 +127,13 @@ export const PLACES: Place[] = [
       location: {
         latitude: 50.935173,
         longitude: 6.953101,
-        zoom: 13
+        zoom: 12
       }
     },
     location: {
       latitude: 50.945173,
       longitude: 6.963101,
-      zoom: 16
+      zoom: 12
     },
     isFavorite: true,
     isPremium: false,
@@ -148,15 +148,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Brussels',
       location: {
-        latitude: 50.85045,
-        longitude: 4.34878,
-        zoom: 13
+        latitude: 50.846557,
+        longitude: 4.351697,
+        zoom: 12
       }
     },
     location: {
-      latitude: 50.86045,
-      longitude: 4.35878,
-      zoom: 16
+      latitude: 50.846557,
+      longitude: 4.351697,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: false,
@@ -171,15 +171,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Dusseldorf',
       location: {
-        latitude: 51.227741,
-        longitude: 6.773456,
-        zoom: 13
+        latitude: 51.225402,
+        longitude: 6.776314,
+        zoom: 12
       }
     },
     location: {
-      latitude: 51.237741,
-      longitude: 6.783456,
-      zoom: 16
+      latitude: 51.225402,
+      longitude: 6.776314,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: false,
@@ -194,15 +194,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Hamburg',
       location: {
-        latitude: 53.551086,
-        longitude: 9.993682,
-        zoom: 13
+        latitude: 53.550341,
+        longitude: 10.000654,
+        zoom: 12
       }
     },
     location: {
-      latitude: 53.561086,
-      longitude: 10.003682,
-      zoom: 16
+      latitude: 53.550341,
+      longitude: 10.000654,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: true,
@@ -217,15 +217,15 @@ export const PLACES: Place[] = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 48.856613,
-        longitude: 2.352222,
-        zoom: 13
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 12
       }
     },
     location: {
-      latitude: 48.866613,
-      longitude: 2.362222,
-      zoom: 16
+      latitude: 48.85661,
+      longitude: 2.351499,
+      zoom: 12
     },
     isFavorite: false,
     isPremium: true,

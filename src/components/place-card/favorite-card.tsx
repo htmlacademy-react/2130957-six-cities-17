@@ -1,10 +1,10 @@
 import PlaceCard from './place-card';
-import { LOCATIONS } from '../../const';
+import { CityName } from '../../types';
 import { Place } from '../../types';
 import { CardType } from '../../const.ts';
 
 type FavoritePlacesProps = {
-  city: LOCATIONS;
+  city: CityName;
   places: Place[];
 }
 
