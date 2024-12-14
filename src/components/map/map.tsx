@@ -55,6 +55,6 @@ export default function Map({ activePlaceId, points, city }: MapProps): JSX.Elem
   }, [activePlaceId, city, map, points]);
 
   return (
-    <section className="cities__map map" style={{ width: '512px' }} ref={mapRef}></section>
+    <section className="cities__map map" ref={mapRef}></section>
   );
 }

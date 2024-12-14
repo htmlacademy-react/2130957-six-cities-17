@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LOCATIONS } from '../const.ts';
+import { CityName } from '../types.ts';
 
-type LOCATIONS = typeof LOCATIONS[keyof typeof LOCATIONS];
-
-export function useActiveCity(): [LOCATIONS, (city: LOCATIONS) => void] {
+export function useActiveCity(): [CityName, (city: CityName) => void] {
   const [searchParams] = useSearchParams();
-  const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
+  const [activeCity, setActiveCity] = useState<CityName>(LOCATIONS.AMSTERDAM);
 
   useEffect(() => {
     const cityParam = searchParams.get('city');
     if (
       cityParam &&
-      (Object.values(LOCATIONS) as LOCATIONS[]).includes(cityParam as LOCATIONS) &&
+      (Object.values(LOCATIONS) as CityName[]).includes(cityParam as CityName) &&
       cityParam !== activeCity
     ) {
-      setActiveCity(cityParam as LOCATIONS);
+      setActiveCity(cityParam as CityName);
     }
   }, [searchParams, activeCity]);
 

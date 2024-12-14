@@ -1,14 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
-import { LOCATIONS } from '../const.ts';
+import { CityName } from '../types.ts';
 
-type LOCATIONS = typeof LOCATIONS[keyof typeof LOCATIONS];
+
 export function useCityChange(
-  activeCity: LOCATIONS,
-  setActiveCity: (city: LOCATIONS) => void
-): (newCity: LOCATIONS) => void {
+  activeCity: CityName,
+  setActiveCity: (city: CityName) => void
+): (newCity: CityName) => void {
   const [, setSearchParams] = useSearchParams();
 
-  return (newCity: LOCATIONS) => {
+  return (newCity: CityName) => {
     if (newCity !== activeCity) {
       setActiveCity(newCity);
       setSearchParams({ city: newCity });

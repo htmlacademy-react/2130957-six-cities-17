@@ -30,7 +30,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
     location: place.location,
   }));
 
-  const city: LocationType = CityLocation[activeCity as keyof typeof CityLocation];
+  const city: LocationType = CityLocation[activeCity];
 
   return (
     <div className="page page--gray page--main">

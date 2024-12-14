@@ -1,9 +1,7 @@
-import { LOCATIONS } from '../../const';
-
-type LOCATIONS = typeof LOCATIONS[keyof typeof LOCATIONS];
+import { CityName } from '../../types';
 
 type MainEmptyProps = {
-  activeCity: LOCATIONS;
+  activeCity: CityName;
 };
 
 export default function MainEmpty({ activeCity }: MainEmptyProps): JSX.Element {
