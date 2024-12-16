@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type LocationItemProps = {
   city: string;
@@ -7,11 +7,11 @@ type LocationItemProps = {
 };
 
 export default function LocationItem({ city, isActive, onClick }: LocationItemProps): JSX.Element {
-  const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
 
   const handleClick = () => {
     onClick();
-    navigate(`/?city=${city}`);
+    setSearchParams({ city });
   };
 
   return (

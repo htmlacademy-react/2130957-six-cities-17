@@ -1,11 +1,15 @@
-import {useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
-import { LOCATIONS } from '../../const.ts';
-import { useLocation } from 'react-router-dom';
 import { Place } from '../../types.ts';
+import { useActiveCity } from '../../hooks/active-city.ts';
+import { useCityChange } from '../../hooks/change-city.ts';
+import Map from '../../components/map/map.tsx';
+import { Point } from '../../types.ts';
+import { LocationType } from '../../types.ts';
+import { CityLocation } from '../../const.ts';
 
 type MainPageProps = {
   allPlaces: number;
@@ -13,21 +17,20 @@ type MainPageProps = {
 };
 
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
-  const location = useLocation();
-  const [activeCity, setActiveCity] = useState<LOCATIONS>(LOCATIONS.AMSTERDAM);
-  const [, setActivePlaceId] = useState<string | null>(null);
+  const [activeCity, setActiveCity] = useActiveCity();
+  const handleCityChange = useCityChange(activeCity, setActiveCity);
+  const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
 
   const handleCardHover = (id: string | null) => {
     setActivePlaceId(id);
   };
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const cityParam = params.get('city') as LOCATIONS;
-    if (cityParam && Object.values(LOCATIONS).includes(cityParam) && cityParam !== activeCity) {
-      setActiveCity(cityParam);
-    }
-  }, [activeCity, location.search]);
+  const points: Point[] = places.map((place) => ({
+    id: place.id,
+    location: place.location,
+  }));
+
+  const city: LocationType = CityLocation[activeCity];
 
   return (
     <div className="page page--gray page--main">
@@ -39,7 +42,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList activeCity={activeCity} setActiveCity={setActiveCity} />
+            <LocationList activeCity={activeCity} setActiveCity={handleCityChange} />
           </section>
         </div>
         <div className="cities">
@@ -71,7 +74,11 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map
+                activePlaceId={activePlaceId}
+                points={points}
+                city={city}
+              />
             </div>
           </div>
         </div>
