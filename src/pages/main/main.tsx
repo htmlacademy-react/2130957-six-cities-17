@@ -4,8 +4,7 @@ import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
 import { Place } from '../../types.ts';
-import { useActiveCity } from '../../hooks/active-city.ts';
-import { useCityChange } from '../../hooks/change-city.ts';
+import { useCityState } from '../../hooks/use-city-state.ts';
 import Map from '../../components/map/map.tsx';
 import { Point } from '../../types.ts';
 import { LocationType } from '../../types.ts';
@@ -18,8 +17,7 @@ type MainPageProps = {
 };
 
 export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
-  const [activeCity, setActiveCity] = useActiveCity();
-  const handleCityChange = useCityChange(activeCity, setActiveCity);
+  const [activeCity, changeCity] = useCityState();
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
 
   const handleCardHover = (id: string | null) => {
@@ -43,7 +41,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList activeCity={activeCity} setActiveCity={handleCityChange} />
+            <LocationList activeCity={activeCity} setActiveCity={changeCity} />
           </section>
         </div>
         <div className="cities">

@@ -172,10 +172,18 @@ export default function Offer ({places, reviews}:OfferProps): JSX.Element {
               <ReviewsList reviews={reviews}/>
             </div>
           </div>
-          <Map city={CITY} points={POINTS} activePlaceId={activePlaceId} className={MapClassName.OfferMap}/>
+          <Map
+            city={CITY}
+            points={POINTS}
+            activePlaceId={activePlaceId}
+            className={MapClassName.OfferMap}
+          />
         </section>
         <div className="container">
-          <NearPlacesList places={OFFERS_NEARBY} onCardHover={handleCardHover}/>
+          <NearPlacesList
+            places={OFFERS_NEARBY}
+            onCardHover={handleCardHover}
+          />
         </div>
       </main>
     </div>

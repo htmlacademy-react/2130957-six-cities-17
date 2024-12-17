@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { LOCATIONS } from '../const.ts';
 import { CityName } from '../types.ts';
 
-export function useActiveCity(): [CityName, (city: CityName) => void] {
-  const [searchParams] = useSearchParams();
+export function useCityState(): [CityName, (newCity: CityName) => void] {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeCity, setActiveCity] = useState<CityName>(LOCATIONS.AMSTERDAM);
 
   useEffect(() => {
@@ -18,5 +18,12 @@ export function useActiveCity(): [CityName, (city: CityName) => void] {
     }
   }, [searchParams, activeCity]);
 
-  return [activeCity, setActiveCity];
+  const changeCity = (newCity: CityName) => {
+    if (newCity !== activeCity) {
+      setActiveCity(newCity);
+      setSearchParams({ city: newCity });
+    }
+  };
+
+  return [activeCity, changeCity];
 }
