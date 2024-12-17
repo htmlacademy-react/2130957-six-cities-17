@@ -11,7 +11,7 @@ type PlaceCardProps = {
   onMouseLeave?: () => void;
 };
 
-export default function PlaceCard({ place, pageType,onMouseEnter, onMouseLeave }: PlaceCardProps): JSX.Element {
+export default function PlaceCard({ place, pageType, onMouseEnter, onMouseLeave }: PlaceCardProps): JSX.Element {
   const classes = classMap[pageType];
 
   return (

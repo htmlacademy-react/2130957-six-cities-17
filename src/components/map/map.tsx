@@ -4,6 +4,7 @@ import { LocationType, Point } from '../../types';
 import leaflet, { layerGroup, Marker } from 'leaflet';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import 'leaflet/dist/leaflet.css';
+import { MapClassName } from '../../const';
 
 const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -21,9 +22,10 @@ type MapProps = {
   city: LocationType;
   points: Point[];
   activePlaceId: string | null;
+  className: MapClassName;
 };
 
-export default function Map({ activePlaceId, points, city }: MapProps): JSX.Element {
+export default function Map({ activePlaceId, points, city, className }: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -55,6 +57,6 @@ export default function Map({ activePlaceId, points, city }: MapProps): JSX.Elem
   }, [activePlaceId, city, map, points]);
 
   return (
-    <section className="cities__map map" ref={mapRef}></section>
+    <section className={className} ref={mapRef}></section>
   );
 }

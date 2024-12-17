@@ -10,6 +10,7 @@ import Map from '../../components/map/map.tsx';
 import { Point } from '../../types.ts';
 import { LocationType } from '../../types.ts';
 import { CityLocation } from '../../const.ts';
+import { MapClassName } from '../../const.ts';
 
 type MainPageProps = {
   allPlaces: number;
@@ -75,6 +76,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
             </section>
             <div className="cities__right-section">
               <Map
+                className={MapClassName.CitiesMap}
                 activePlaceId={activePlaceId}
                 points={points}
                 city={city}
