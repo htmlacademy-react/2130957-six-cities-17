@@ -77,7 +77,7 @@ export const DEFAULT_CITY: LocationType = {
   zoom: 13,
 };
 
-export const CityLocation: { [key in CityName]: LocationType } = {
+export const CityLocation: Record<CityName, LocationType> = {
   Paris: {
     latitude: 48.85661,
     longitude: 2.351499,

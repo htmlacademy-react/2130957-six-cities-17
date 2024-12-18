@@ -1,30 +1,30 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Header from '../../components/header/header.tsx';
 import LocationList from '../../components/location-list/location-list.tsx';
 import CurrentPlaces from '../../components/place-card/current-card.tsx';
 import { Helmet } from 'react-helmet-async';
-import { Place } from '../../types.ts';
-import { useCityState } from '../../hooks/use-city-state.ts';
 import Map from '../../components/map/map.tsx';
 import { Point } from '../../types.ts';
 import { LocationType } from '../../types.ts';
 import { CityLocation } from '../../const.ts';
 import { MapClassName } from '../../const.ts';
+import { RootState } from '../../store';
 
-type MainPageProps = {
-  allPlaces: number;
-  places: Place[];
-};
 
-export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Element {
-  const [activeCity, changeCity] = useCityState();
+export default function MainPage(): JSX.Element {
+  const activeCity = useSelector((state: RootState) => state.offers.city);
+  const places = useSelector((state: RootState) => state.offers.offers);
+
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
+
+  const filteredPlaces = places.filter((place) => place.city.name === activeCity);
 
   const handleCardHover = (id: string | null) => {
     setActivePlaceId(id);
   };
 
-  const points: Point[] = places.map((place) => ({
+  const points: Point[] = filteredPlaces.map((place) => ({
     id: place.id,
     location: place.location,
   }));
@@ -41,14 +41,14 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList activeCity={activeCity} setActiveCity={changeCity} />
+            <LocationList />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{allPlaces} places to stay in {activeCity}</b>
+              <b className="places__found">{filteredPlaces.length} {filteredPlaces.length === 1 ? 'place' : 'places'} to stay in {activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -66,7 +66,7 @@ export default function MainPage({ allPlaces, places }: MainPageProps): JSX.Elem
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <CurrentPlaces
-                  places={places}
+                  places={filteredPlaces}
                   city={activeCity}
                   onCardHover={handleCardHover}
                 />

@@ -1,14 +1,19 @@
 import LocationItem from './location-item.tsx';
-import {LOCATIONS} from '../../const.ts';
+import { useSelector, useDispatch } from 'react-redux';
+import { LOCATIONS } from '../../const.ts';
 import { CityName } from '../../types.ts';
+import { changeCity } from '../../store/reducer';
+import { RootState } from '../../store';
 
-type LocationListProps = {
-  activeCity: CityName;
-  setActiveCity: (city: CityName) => void;
-};
+export default function LocationList(): JSX.Element {
+  const dispatch = useDispatch();
+  const activeCity = useSelector((state: RootState) => state.offers.city);
 
-export default function LocationList({ activeCity, setActiveCity }: LocationListProps): JSX.Element {
   const locations: CityName[] = Object.values(LOCATIONS) as CityName[];
+
+  const handleCityChange = (city: CityName) => {
+    dispatch(changeCity(city));
+  };
 
   return (
     <ul className="locations__list tabs__list">
@@ -17,7 +22,7 @@ export default function LocationList({ activeCity, setActiveCity }: LocationList
           key={city}
           city={city}
           isActive={city === activeCity}
-          onClick={() => setActiveCity(city)}
+          onClick={() => handleCityChange(city)}
         />
       ))}
     </ul>
