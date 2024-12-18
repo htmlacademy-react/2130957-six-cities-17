@@ -33,6 +33,7 @@ export const LOCATIONS = {
 export enum CardType {
   Favorites = 'favorites',
   Cities = 'cities',
+  Neighbourhoods = 'near-places',
 }
 
 export const classMap = {
@@ -46,6 +47,13 @@ export const classMap = {
   cities: {
     card: 'cities__card',
     imageWrapper: 'cities__image-wrapper',
+    imageWidth: 260,
+    imageHeight: 200,
+    info: '',
+  },
+  'near-places': {
+    card: 'near-places',
+    imageWrapper: 'near-places__image-wrapper',
     imageWidth: 260,
     imageHeight: 200,
     info: '',
@@ -101,3 +109,8 @@ export const CityLocation: { [key in CityName]: LocationType } = {
     zoom: 12,
   },
 };
+
+export enum MapClassName {
+  CitiesMap = 'cities__map map',
+  OfferMap = 'offer__map map',
+}

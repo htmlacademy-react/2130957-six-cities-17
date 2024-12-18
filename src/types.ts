@@ -33,3 +33,14 @@ export type ReviewFormType = {
 
 export type Point = Pick<Place, 'id' | 'location'>;
 
+export type ReviewItemType = {
+  id: string;
+  rating: number;
+  review: string;
+  userName: string;
+  userAvatarUrl: string;
+  date: {
+    value: string;
+    display: string;
+  };
+}

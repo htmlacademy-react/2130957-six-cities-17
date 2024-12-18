@@ -8,12 +8,14 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import PrivateRoute from '../private-route/private-route.tsx';
 import {HelmetProvider} from 'react-helmet-async';
 import { Place } from '../../types.ts';
+import { ReviewItemType } from '../../types.ts';
 
 type AppProps = {
   places: Place[];
+  reviews: ReviewItemType[];
 }
 
-export default function App({places}: AppProps): JSX.Element {
+export default function App({places, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -21,7 +23,7 @@ export default function App({places}: AppProps): JSX.Element {
           <Route path={AppRoutes.Main} element={<MainPage places={places} allPlaces={CardSettings.AllPlaces}/>}/>
           <Route path={AppRoutes.Login} element={<Login/>}/>
           <Route path={AppRoutes.Favourites} element={<PrivateRoute authStatus={AuthStatus.NoAuth}><Favorites places={places}/></PrivateRoute>}/>
-          <Route path={AppRoutes.Offer} element={<Offer/>}/>
+          <Route path={AppRoutes.Offer} element={<Offer places={places} reviews={reviews}/>}/>
           <Route path={AppRoutes.Error} element={<Error/>} />
         </Routes>
       </BrowserRouter>
