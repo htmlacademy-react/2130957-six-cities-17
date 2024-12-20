@@ -16,7 +16,7 @@ type OfferProps = {
 }
 
 export default function Offer ({places, reviews}:OfferProps): JSX.Element {
-  const CURRENT_PLACE = places[0];
+  const CURRENT_PLACE = places[0]; // Временное решение
   const CITY = CURRENT_PLACE.city.location;
 
   const [activePlaceId, setActivePlaceId] = useState<string | null>(CURRENT_PLACE.id);
