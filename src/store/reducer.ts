@@ -1,15 +1,19 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { changeCity, setOffers } from './action';
-import { initialState } from './types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { initialState } from './get-initial-state';
+import { CityName, Place } from '../types';
 
-const reducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(changeCity, (state, action) => {
+const offersSlice = createSlice({
+  name: 'offers',
+  initialState,
+  reducers: {
+    changeCity(state, action: PayloadAction<CityName>) {
       state.city = action.payload;
-    })
-    .addCase(setOffers, (state, action) => {
+    },
+    setOffers(state, action: PayloadAction<Place[]>) {
       state.offers = action.payload;
-    });
+    },
+  },
 });
 
-export default reducer;
+export const { changeCity, setOffers } = offersSlice.actions;
+export default offersSlice.reducer;
