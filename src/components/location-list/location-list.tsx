@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { LOCATIONS } from '../../const';
+import { LOCATIONS, DEFAULT_CITY } from '../../const';
 import { CityName } from '../../types';
 import { changeCity } from '../../store/action';
 import { RootState } from '../../store';
 import LocationItem from './location-item';
-import { DEFAULT_CITY } from '../../const';
 
 export default function LocationList(): JSX.Element {
   const dispatch = useDispatch();
