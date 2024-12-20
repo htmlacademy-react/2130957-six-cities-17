@@ -2,7 +2,7 @@ import LocationItem from './location-item.tsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOCATIONS } from '../../const.ts';
 import { CityName } from '../../types.ts';
-import { changeCity } from '../../store/reducer';
+import { changeCity } from '../../store/action';
 import { RootState } from '../../store';
 
 export default function LocationList(): JSX.Element {
