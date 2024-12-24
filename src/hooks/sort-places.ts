@@ -1,12 +1,12 @@
 import { Place } from '../types';
-import { SortOptionName } from '../types';
+import { SortOptionKey } from '../types';
 
 type SortPlacesProps = {
   filteredPlaces: Place[];
-  sortOption: SortOptionName;
+  sortOption: SortOptionKey;
 }
 
-export default function sortPlaces({ filteredPlaces, sortOption }: SortPlacesProps):Place[] {
+export default function sortPlaces({ filteredPlaces, sortOption }: SortPlacesProps): Place[] {
   return [...filteredPlaces].sort((a, b) => {
     switch (sortOption) {
       case 'PriceLowHigh':
