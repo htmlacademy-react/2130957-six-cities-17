@@ -1,15 +1,27 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { changeCity, setOffers } from './action';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './get-initial-state';
+import { CityName, Place } from '../types';
+import { RootState } from './index';
 
-const reducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(changeCity, (state, action) => {
+const offersSlice = createSlice({
+  name: 'offers',
+  initialState,
+  reducers: {
+    changeCity(state, action: PayloadAction<CityName>) {
       state.city = action.payload;
-    })
-    .addCase(setOffers, (state, action) => {
+    },
+    setOffers(state, action: PayloadAction<Place[]>) {
       state.offers = action.payload;
-    });
+    },
+  },
 });
 
-export default reducer;
+// Экспортируем редьюсеры
+export const { changeCity, setOffers } = offersSlice.actions;
+
+// Добавляем селекторы
+export const selectActiveCity = (state: RootState): CityName => state.offers.city;
+export const selectOffers = (state: RootState): Place[] => state.offers.offers;
+
+// Экспорт редьюсера
+export default offersSlice.reducer;
