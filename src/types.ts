@@ -45,4 +45,13 @@ export type ReviewItemType = {
   };
 }
 
-export type SortOptionName = keyof typeof sortOptionNames;
+export type sortOptionNamesType = {
+  Popular: string;
+  PriceLowHigh: string;
+  PriceHighLow: string;
+  TopRated: string;
+  }
+
+export type SortOptionKey = keyof typeof sortOptionNames;
+
+export type SortOptionName = typeof sortOptionNames[SortOptionKey];

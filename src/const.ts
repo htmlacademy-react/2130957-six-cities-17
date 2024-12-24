@@ -1,6 +1,4 @@
-import { ReviewFormType } from './types';
-import { LocationType } from './types';
-import { CityName } from './types';
+import { ReviewFormType, CityName, LocationType, sortOptionNamesType } from './types';
 
 export const AuthStatus = {
   Auth : 'AUTH',
@@ -107,9 +105,9 @@ export enum MapClassName {
   OfferMap = 'offer__map map',
 }
 
-export const sortOptionNames: Record<string, string> = {
+export const sortOptionNames: sortOptionNamesType = {
   Popular: 'Popular',
   PriceLowHigh: 'Price: low to high',
   PriceHighLow: 'Price: high to low',
   TopRated: 'Top rated first',
-};
+} as const;
