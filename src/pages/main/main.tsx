@@ -10,6 +10,7 @@ import { LocationType } from '../../types.ts';
 import { CityLocation } from '../../const.ts';
 import { MapClassName } from '../../const.ts';
 import PlacesSorting from '../../components/places-sorting/places-sorting.tsx';
+import sortPlaces from '../../hooks/sort-places.ts';
 
 export default function MainPage(): JSX.Element {
   const activeCity = useAppSelector((state) => state.offers.city);
@@ -20,18 +21,7 @@ export default function MainPage(): JSX.Element {
 
   const filteredPlaces = places.filter((place) => place.city.name === activeCity);
 
-  const sortedPlaces = [...filteredPlaces].sort((a, b) => {
-    switch (sortOption) {
-      case 'PriceLowHigh':
-        return a.price - b.price;
-      case 'PriceHighLow':
-        return b.price - a.price;
-      case 'TopRated':
-        return b.rating - a.rating;
-      default:
-        return 0;
-    }
-  });
+  const sortedPlaces = sortPlaces({ filteredPlaces, sortOption });
 
   const handleCardHover = (id: string | null) => {
     setActivePlaceId(id);
