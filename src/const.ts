@@ -2,10 +2,6 @@ import { ReviewFormType } from './types';
 import { LocationType } from './types';
 import { CityName } from './types';
 
-export const CardSettings = {
-  AllPlaces: 312
-} as const;
-
 export const AuthStatus = {
   Auth : 'AUTH',
   NoAuth : 'NO_AUTH',
@@ -66,10 +62,10 @@ export const DEFAULT_STATE: ReviewFormType = {
 };
 
 export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+  'img/pin.svg';
 
 export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+  'img/pin-active.svg';
 
 export const DEFAULT_CITY = LOCATIONS.PARIS;
 
@@ -110,3 +106,10 @@ export enum MapClassName {
   CitiesMap = 'cities__map map',
   OfferMap = 'offer__map map',
 }
+
+export const sortOptionNames: Record<string, string> = {
+  Popular: 'Popular',
+  PriceLowHigh: 'Price: low to high',
+  PriceHighLow: 'Price: high to low',
+  TopRated: 'Top rated first',
+};

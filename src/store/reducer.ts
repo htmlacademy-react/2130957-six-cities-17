@@ -13,15 +13,16 @@ const offersSlice = createSlice({
     setOffers(state, action: PayloadAction<Place[]>) {
       state.offers = action.payload;
     },
+    changeSortOption(state, action: PayloadAction<string>) {
+      state.sortOption = action.payload;
+    },
   },
 });
 
-// Экспортируем редьюсеры
-export const { changeCity, setOffers } = offersSlice.actions;
+export const { changeCity, setOffers, changeSortOption } = offersSlice.actions;
 
-// Добавляем селекторы
 export const selectActiveCity = (state: RootState): CityName => state.offers.city;
 export const selectOffers = (state: RootState): Place[] => state.offers.offers;
+export const selectSortOption = (state: RootState): string => state.offers.sortOption;
 
-// Экспорт редьюсера
 export default offersSlice.reducer;
