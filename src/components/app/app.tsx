@@ -7,14 +7,14 @@ import Offer from '../../pages/offer/offer.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../private-route/private-route.tsx';
 import { HelmetProvider } from 'react-helmet-async';
-import { Place } from '../../types.ts';
-import { ReviewItemType } from '../../types.ts';
+import { Place, ReviewItemType } from '../../types.ts';
 import { useAppSelector } from '../../store/hooks';
 import { Preloader } from '../preloader/preloader.tsx';
 import { useAppDispatch } from '../../store/hooks';
 import { useEffect } from 'react';
 import { fetchOffersAction } from '../../api/actions.ts';
-import { loadData } from '../../store/reducer.ts';
+import { selectLoading, selectError } from '../../store/reducer.ts';
+import ServerError from '../../pages/error/server-error.tsx';
 
 type AppProps = {
   places: Place[];
@@ -22,7 +22,8 @@ type AppProps = {
 }
 
 export default function App({ places, reviews }: AppProps): JSX.Element {
-  const loading = useAppSelector(loadData);
+  const loading = useAppSelector(selectLoading);
+  const error = useAppSelector(selectError);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -31,6 +32,10 @@ export default function App({ places, reviews }: AppProps): JSX.Element {
 
   if (loading) {
     return <Preloader />;
+  }
+
+  if (error) {
+    return <ServerError />;
   }
 
   return (

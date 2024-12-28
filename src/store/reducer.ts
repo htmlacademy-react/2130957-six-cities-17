@@ -8,6 +8,7 @@ export interface State {
   offers: Place[];
   sortOption: SortOptionName;
   loading: boolean;
+  error: boolean;
 }
 
 const getInitialCity = (): CityName => {
@@ -22,10 +23,11 @@ const getInitialCity = (): CityName => {
 };
 
 export const initialState: State = {
-  loading: true,
   city: getInitialCity(),
   offers: [],
   sortOption: sortOptionNames.Popular,
+  loading: true,
+  error: false,
 };
 
 
@@ -33,9 +35,6 @@ const offersSlice = createSlice({
   name: 'offers',
   initialState,
   reducers: {
-    getLoading(state, action: PayloadAction<boolean>) {
-      state.loading = action.payload;
-    },
     changeCity(state, action: PayloadAction<CityName>) {
       state.city = action.payload;
     },
@@ -45,14 +44,21 @@ const offersSlice = createSlice({
     changeSortOption(state, action: PayloadAction<string>) {
       state.sortOption = action.payload;
     },
+    getLoading(state, action: PayloadAction<boolean>) {
+      state.loading = action.payload;
+    },
+    setError(state, action: PayloadAction<boolean>) {
+      state.error = action.payload;
+    },
   },
 });
 
-export const { changeCity, setOffers, changeSortOption, getLoading } = offersSlice.actions;
+export const { changeCity, setOffers, changeSortOption, getLoading, setError } = offersSlice.actions;
 
-export const loadData = (state: RootState): boolean => state.offers.loading;
+export const selectLoading = (state: RootState): boolean => state.offers.loading;
 export const selectActiveCity = (state: RootState): CityName => state.offers.city;
 export const selectOffers = (state: RootState): Place[] => state.offers.offers;
 export const selectSortOption = (state: RootState): string => state.offers.sortOption;
+export const selectError = (state: RootState): boolean => state.offers.error;
 
 export default offersSlice.reducer;
