@@ -1,4 +1,4 @@
-import { LOCATIONS } from './const';
+import { LOCATIONS, sortOptionNames} from './const';
 
 export type CityName = (typeof LOCATIONS)[keyof typeof LOCATIONS];
 
@@ -44,3 +44,14 @@ export type ReviewItemType = {
     display: string;
   };
 }
+
+export type sortOptionNamesType = {
+  Popular: string;
+  PriceLowHigh: string;
+  PriceHighLow: string;
+  TopRated: string;
+  }
+
+export type SortOptionKey = keyof typeof sortOptionNames;
+
+export type SortOptionName = typeof sortOptionNames[SortOptionKey];
