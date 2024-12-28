@@ -2,7 +2,7 @@ import {ChangeEvent, FormEvent, useState} from 'react';
 import { DEFAULT_STATE } from '../../const';
 import { ReviewFormType } from '../../types';
 
-export default function RunReviewForm() {
+export default function RunReviewForm():JSX.Element {
   const [formData, setFormData] = useState<ReviewFormType>(DEFAULT_STATE);
 
   const isValidRating = formData.rating > 0 && formData.rating <= 5;

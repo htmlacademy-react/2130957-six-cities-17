@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CityName, Place, SortOptionName } from '../types';
 import { RootState } from './index';
 import { sortOptionNames, DEFAULT_CITY, LOCATIONS } from '../const';
-import { PLACES } from '../mocks/offers';
 
 export interface State {
   city: CityName;
   offers: Place[];
   sortOption: SortOptionName;
+  loading: boolean;
 }
 
 const getInitialCity = (): CityName => {
@@ -22,8 +22,9 @@ const getInitialCity = (): CityName => {
 };
 
 export const initialState: State = {
+  loading: true,
   city: getInitialCity(),
-  offers: PLACES,
+  offers: [],
   sortOption: sortOptionNames.Popular,
 };
 
@@ -32,6 +33,9 @@ const offersSlice = createSlice({
   name: 'offers',
   initialState,
   reducers: {
+    getLoading(state, action: PayloadAction<boolean>) {
+      state.loading = action.payload;
+    },
     changeCity(state, action: PayloadAction<CityName>) {
       state.city = action.payload;
     },
@@ -44,8 +48,9 @@ const offersSlice = createSlice({
   },
 });
 
-export const { changeCity, setOffers, changeSortOption } = offersSlice.actions;
+export const { changeCity, setOffers, changeSortOption, getLoading } = offersSlice.actions;
 
+export const loadData = (state: RootState): boolean => state.offers.loading;
 export const selectActiveCity = (state: RootState): CityName => state.offers.city;
 export const selectOffers = (state: RootState): Place[] => state.offers.offers;
 export const selectSortOption = (state: RootState): string => state.offers.sortOption;
