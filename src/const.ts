@@ -111,3 +111,5 @@ export const sortOptionNames: sortOptionNamesType = {
   PriceHighLow: 'Price: high to low',
   TopRated: 'Top rated first',
 } as const;
+
+export const OFFERS:string = 'offers';

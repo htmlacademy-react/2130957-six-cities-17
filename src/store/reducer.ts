@@ -1,7 +1,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialState } from './get-initial-state';
-import { CityName, Place } from '../types';
+import { CityName, Place, SortOptionName } from '../types';
 import { RootState } from './index';
+import { sortOptionNames, DEFAULT_CITY, LOCATIONS } from '../const';
+import { PLACES } from '../mocks/offers';
+
+export interface State {
+  city: CityName;
+  offers: Place[];
+  sortOption: SortOptionName;
+}
+
+const getInitialCity = (): CityName => {
+  const params = new URLSearchParams(window.location.search);
+  const cityFromURL = params.get('city') as CityName;
+
+  if (cityFromURL && Object.values(LOCATIONS).includes(cityFromURL)) {
+    return cityFromURL;
+  }
+
+  return DEFAULT_CITY;
+};
+
+export const initialState: State = {
+  city: getInitialCity(),
+  offers: PLACES,
+  sortOption: sortOptionNames.Popular,
+};
+
 
 const offersSlice = createSlice({
   name: 'offers',

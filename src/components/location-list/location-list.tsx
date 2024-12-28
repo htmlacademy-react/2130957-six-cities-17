@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LOCATIONS, DEFAULT_CITY } from '../../const';
 import { CityName } from '../../types';
-import { changeCity } from '../../store/reducer';
+import { changeCity, selectActiveCity } from '../../store/reducer';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import LocationItem from './location-item';
 
 export default function LocationList(): JSX.Element {
   const dispatch = useAppDispatch();
-  const activeCity = useAppSelector((state) => state.offers.city);
+  const activeCity = useAppSelector(selectActiveCity);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const locations: CityName[] = Object.values(LOCATIONS) as CityName[];
