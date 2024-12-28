@@ -3,7 +3,7 @@ import { changeSortOption } from '../../store/action';
 import { useState } from 'react';
 import { sortOptionNames } from '../../const';
 import { SortOptionKey } from '../../types';
-import { selectSortOption } from '../../store/reducer';
+import { selectSortOption } from '../../store/slices/offers';
 
 export default function PlaceSorting(): JSX.Element {
   const dispatch = useAppDispatch();

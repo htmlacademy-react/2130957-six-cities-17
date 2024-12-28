@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LOCATIONS, DEFAULT_CITY } from '../../const';
 import { CityName } from '../../types';
-import { changeCity, selectActiveCity } from '../../store/reducer';
+import { changeCity, selectActiveCity } from '../../store/slices/offers';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import LocationItem from './location-item';
 

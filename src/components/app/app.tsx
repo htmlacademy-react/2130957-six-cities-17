@@ -13,7 +13,7 @@ import { Preloader } from '../preloader/preloader.tsx';
 import { useAppDispatch } from '../../store/hooks';
 import { useEffect } from 'react';
 import { fetchOffersAction } from '../../api/actions.ts';
-import { selectLoading, selectError } from '../../store/reducer.ts';
+import { selectLoading, selectError } from '../../store/slices/loading.ts';
 import ServerError from '../../pages/error/server-error.tsx';
 
 type AppProps = {

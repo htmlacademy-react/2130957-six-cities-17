@@ -11,7 +11,7 @@ import { CityLocation } from '../../const.ts';
 import { MapClassName } from '../../const.ts';
 import PlacesSorting from '../../components/places-sorting/places-sorting.tsx';
 import sortPlaces from '../../hooks/sort-places.ts';
-import { selectSortOption, selectActiveCity, selectOffers } from '../../store/reducer.ts';
+import { selectSortOption, selectActiveCity, selectOffers } from '../../store/slices/offers.ts';
 
 export default function MainPage(): JSX.Element {
   const activeCity = useAppSelector(selectActiveCity);

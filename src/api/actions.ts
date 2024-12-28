@@ -3,7 +3,7 @@ import {ThunkOptions} from './types.ts';
 import {Place} from '../types.ts';
 import {ApiRoutes} from './const.ts';
 import {setOffers} from '../store/action.ts';
-import { getLoading, setError } from '../store/reducer.ts';
+import { getLoading, setError } from '../store/slices/loading.ts';
 
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, ThunkOptions>(

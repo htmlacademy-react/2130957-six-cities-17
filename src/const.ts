@@ -112,4 +112,8 @@ export const sortOptionNames: sortOptionNamesType = {
   TopRated: 'Top rated first',
 } as const;
 
-export const OFFERS:string = 'offers';
+export enum Slices {
+  Loading = 'loading',
+  Offers = 'offers',
+}
+
