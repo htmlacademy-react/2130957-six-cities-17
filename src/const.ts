@@ -115,5 +115,7 @@ export const sortOptionNames: sortOptionNamesType = {
 export enum Slices {
   Loading = 'loading',
   Offers = 'offers',
+  Sort = 'sort',
+  City = 'city',
 }
 

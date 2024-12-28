@@ -16,7 +16,7 @@ export function Preloader(): JSX.Element {
     width: '50px',
     height: '50px',
     border: '4px solid #f3f3f3',
-    borderTop: '4px solid #3498db',
+    borderTop: '4px solid #4481c3',
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
   };
