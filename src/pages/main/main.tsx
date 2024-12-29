@@ -11,11 +11,13 @@ import { CityLocation } from '../../const.ts';
 import { MapClassName } from '../../const.ts';
 import PlacesSorting from '../../components/places-sorting/places-sorting.tsx';
 import sortPlaces from '../../hooks/sort-places.ts';
+import { selectOffers, selectSortOption } from '../../store/slices/offers.ts';
+import { selectActiveCity } from '../../store/slices/city.ts';
 
 export default function MainPage(): JSX.Element {
-  const activeCity = useAppSelector((state) => state.offers.city);
-  const places = useAppSelector((state) => state.offers.offers);
-  const sortOption = useAppSelector((state) => state.offers.sortOption);
+  const activeCity = useAppSelector(selectActiveCity);
+  const places = useAppSelector(selectOffers);
+  const sortOption = useAppSelector(selectSortOption);
 
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null);
 
