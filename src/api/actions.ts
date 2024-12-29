@@ -1,10 +1,8 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {ThunkOptions} from './types.ts';
-import {Place} from '../types.ts';
-import {ApiRoutes} from './const.ts';
+import {Place, ThunkOptions} from '../types.ts';
+import {ApiRoutes} from '../const.ts';
 import {setOffers} from '../store/action.ts';
-import { getLoading, setError } from '../store/slices/loading.ts';
-
+import { setLoading, setError } from '../store/slices/loading.ts';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, ThunkOptions>(
   'offers/get',
@@ -19,7 +17,7 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, ThunkOptions>
     } catch (error) {
       dispatch(setError(true));
     } finally {
-      dispatch(getLoading(false));
+      dispatch(setLoading(false));
     }
   }
 );

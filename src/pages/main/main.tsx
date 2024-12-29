@@ -11,8 +11,7 @@ import { CityLocation } from '../../const.ts';
 import { MapClassName } from '../../const.ts';
 import PlacesSorting from '../../components/places-sorting/places-sorting.tsx';
 import sortPlaces from '../../hooks/sort-places.ts';
-import { selectOffers } from '../../store/slices/offers.ts';
-import { selectSortOption } from '../../store/slices/sort.ts';
+import { selectOffers, selectSortOption } from '../../store/slices/offers.ts';
 import { selectActiveCity } from '../../store/slices/city.ts';
 
 export default function MainPage(): JSX.Element {
