@@ -3,10 +3,11 @@ import { changeSortOption } from '../../store/action';
 import { useState } from 'react';
 import { sortOptionNames } from '../../const';
 import { SortOptionKey } from '../../types';
+import { selectSortOption } from '../../store/slices/offers';
 
 export default function PlaceSorting(): JSX.Element {
   const dispatch = useAppDispatch();
-  const sortOption = useAppSelector((state) => state.offers.sortOption);
+  const sortOption = useAppSelector(selectSortOption);
   const [isOptionsOpen, setOptionsOpen] = useState(false);
 
   const handleSortChange = (option: SortOptionKey) => {
